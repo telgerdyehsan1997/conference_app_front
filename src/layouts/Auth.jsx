@@ -8,7 +8,6 @@ const Auth = ({ content }) => {
       <Container className="auth-container align-self-center">
         <Row className="wrapper">
           <Col md={6} className="mx-auto bg-white p-3 rounded">
-            <h1 className="logo text-center">DADEMAN</h1>
             <GoogleLogin />
           </Col>
         </Row>

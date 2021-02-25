@@ -3,16 +3,17 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import NotFound from "./layouts/NotFound";
 import Base from "./layouts/Base";
 import Auth from "./layouts/Auth";
+import Dashboard from "./components/Dashboard/index";
 
 const isLoggedIn = () => {
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // if (user && user.accessToken) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user && user.accessToken) {
+    return true;
+  } else {
+    return false;
+  }
 
-  return true;
+  return false;
 };
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -33,7 +34,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const AppRouter = () => (
   <Switch>
     <Route exact path="/login" render={() => <Auth />} />
-    {/* <PrivateRoute exact path="/tasks" component={TaskList} /> */}
+    <PrivateRoute exact path="/" component={Dashboard} />
     <Route render={() => <Base content={<NotFound />} />} />
   </Switch>
 );
